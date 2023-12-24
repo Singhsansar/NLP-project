@@ -1,11 +1,33 @@
 from textblob import TextBlob
 import wikipedia
 
-golden_state_warriors_text = wikipedia.summary("Golden State Warriors")
-print(golden_state_warriors_text)
-blob = TextBlob(golden_state_warriors_text)
-print(blob.tags)
-print(blob.noun_phrases)
-print(blob.sentiment)
-print(blob.sentences)
-print(blob.words)
+
+def search_wiki(query):
+    """Searching Wikipedia:"""
+
+    print(f"Searching Wikipedia for {query}...")
+    return wikipedia.search(query)
+
+
+def get_wiki_summary(query):
+    """Summarize wikipedia:"""
+
+    print(f"Getting Wikipedia summary for {query}...")
+    return wikipedia.summary(query)
+
+
+def text_blob(text):
+    blob = TextBlob(text)
+    return blob
+
+
+def get_phrases(text):
+    """Searching a wikipedia page for phrases..."""
+    text = get_wiki_summary(text)
+    blob = TextBlob(text)
+    pharses = blob.noun_phrases
+    return pharses
+
+
+# golden_state_warriors_text = wikipedia.summary("Golden State Warriors")
+# blob = TextBlob(golden_state_warriors_text)
